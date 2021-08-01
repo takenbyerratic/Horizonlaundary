@@ -1,0 +1,133 @@
+
+
+{% extends "layout.html"%}
+{% block body%}
+
+
+<body>
+
+					
+	<!-----------categories----------->
+	<section class="featured-categories">
+		<div class="container">
+			<div class="row">
+				<!--for loop laga -->
+				
+				<div class="col-md-4">
+					<img src="...">
+				</div>
+			</div>
+		</div>
+	</section>
+<!-------sale--------->
+	<section class="on-sale">
+	<div class="container">
+		
+
+<br>		<div class="row">
+			{% if rresult %}
+			{% for x in range(rcount) %}
+			<div class="col-md-4">
+				<!-----for loop laga-------------->
+				<div class="product-top">
+					
+				</div>
+				<div class="product-bottom text-center"  style="margine:10%">
+				<img src="{{rresult[x]['image_url']}}" style="width:250px;" >
+					<h3>Name : {{rresult[x]['model_name']}}</h3>
+					<h5>Price : {{rresult[x]['price']}}</h5>
+			<form action="/removefromcart" method='POST'>
+			<button type="submit" name =  "remove" value ="{{rresult[x]['model_name']}}">Remove from cart</button>
+			</form>
+			
+
+				</div>
+			</div>
+			{% endfor %}
+						{{rtotal}}
+			<br>
+			{{rcount}}
+			<br><br><br><br><br><br>
+						<form action="/payment" method='POST'>
+			<button type="submit" name =  "payment" value = {{rtotal}}>Proceed to pay</button>
+			</form>
+			{%else%}
+			<br>
+			{{data}}
+			<br>
+			<br>
+				<form action="/rentdata" method="POST" class="clickbtn text-center" >
+		<button class="btn btn-primary" type="submit" name ="submit" value="harvester">Buy</button></form>
+		
+		</form>
+			{%  endif %}
+			
+			<br>
+		
+
+		</div>
+		<center><button><a class="nav-link" href="/myprofile">Back</a></button></center>
+	</div>
+
+	</section>
+
+	<!-------Footer-------->
+	<section class="footer">
+		<div class="container tex-center">
+			<div class="row">
+				<div class="col-md-3">
+					<h1>Useful links</h1>
+					<p>Privacy Policy</p>	
+					<p>Terms of use</p>	
+					<p>Return Policy</p>	
+					<p>Discount Coupans</p>	
+				</div>
+				<div class="col-md-3">
+					<h1>Company</h1>
+					<p>About Us</p>	
+					<p>Contact Us</p>	
+					<p>Career</p>
+					<p>Affiliate</p>	
+				</div>
+				<div class="col-md-3">
+					<h1>Follow Us On</h1>
+					<p><i class="fa fa-facebook-official"></i>Facebook</p>	
+					<p><i class="fa fa-youtube-play"></i>Youtube</p>	
+					<p><i class="fa fa-linkedin"></i>LinkedIn</p>
+					<p><i class="fa fa-twitter"></i>Twitter</p>	
+				</div>
+			</div>
+			<hr>
+			<p class="copyright"><i class="fa fa-copyright"></i>
+MAde In India </p>
+		</div>
+	</section>
+
+
+{% if redemo %}
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><!--{{redemo['rName'][1]}}--></h4>
+          <button class="btn btn-primary" type="button" class="close" data-dismiss="modal">&times;</button>
+  
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+{% endif %}
+
+</body>
+
+{%endblock%}

@@ -1,0 +1,41 @@
+{% extends "layout.html"%}
+{% block body%}
+<center>
+	<form action="" method="POST">
+        <table>
+          	<tr>
+          		<td> 
+          			<label>RATINGS</label>>
+          		</td>
+          		<td>
+          			<select name="power">
+    					<option value="35">1</option>
+    					<option value="45">2</option>
+    					<option value="55">3</option>
+    					<option value="60">4</option>
+    					<option value="75">5</option>
+  					</select>
+
+          		</td>
+          	</tr>
+			<br>
+          	<tr>
+          		<td> 
+          			<label>DELIVERY FEEDBACK</label>>
+          		</td>
+          		<td>
+          			<select name="engine_cc">
+    					<option value="2500">ON TIME</option>
+    					<option value="3500">LATE</option>
+    					<option value="4088">PENDING</option>>
+  					</select>
+          		</td>
+          	</tr>
+          
+	<button class="btn" type="submit" name="recommend">Submit</button>
+    </form>
+	</center>
+	{% if value %}
+	<h2>{{value}}</h2>
+	{% endif %}
+{%endblock%}

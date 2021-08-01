@@ -1,0 +1,44 @@
+
+{% extends "layout.html"%}
+{% block body%}
+
+
+<body> 
+	
+					
+<!-------sale--------->
+	<section class="on-sale">
+	<div class="container">
+		<div class="title-box">
+			<h2>SERVICES</h2>
+		</div>
+		
+<br>		<div class="row">
+			{% if redemo %}
+
+			{% for x in range(rcount) %}
+			<div class="col-md-4">
+				
+				
+				<div class="product-bottom text-center"  style="margine:10%">
+					<h3>{{redemo['rmodel'][x]}}{% if redemo["check"] =="yes" %}<i class="fa fa-check-circle"></i></h2>{%endif%}</h3>
+                    <h5>Price : {{redemo['rPrice'][x]}}</h5>
+					<form action="/addtocart" method="POST">
+					<button type="submit" class="btn btn-primary" name="addtocart" value="{{redemo['rmodel'][x]}}">Add to Cart</button>
+					</form>
+				</div>
+			</div>
+			{% endfor %}
+			{%  endif %}
+			
+		</div>
+	</div>
+	</section>
+
+
+
+
+
+</body>
+
+{%endblock%}

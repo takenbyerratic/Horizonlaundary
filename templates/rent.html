@@ -1,0 +1,29 @@
+{% extends "layout.html"%}
+{% block body%}
+    <div class = "container">
+        <center><h1>SERVICES</h1></center>
+    <form action="" method="POST">
+			{% if rresult %}
+
+			{% for x in range(rcount) %}
+			<div class="col-md-4">
+				<!-----for loop laga-------------->
+
+				 <strong><u style="margin-left:135px">on rent</u>
+				<div class="product-bottom text-center">
+					<h3>Name : {{rresult[x]['model_name']}}</h3>
+					<h5>Price : {{rresult[x]['expected_price']}}</h5>
+
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			
+			{{data}}
+			{%  endif %}
+   
+    
+
+		
+    </form>
+{%endblock%}
